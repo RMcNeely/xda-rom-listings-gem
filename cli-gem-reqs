@@ -1,0 +1,27 @@
+things needed
+  last updated
+  creator/contributers
+  base
+  version(Android Version)
+
+CLI should
+  print scraped info
+
+
+
+base url
+  http://forum.xda-developers.com/lg-g3/development#romList
+
+
+Content Div (Holds JS? Box of selections)
+div id"tab_romList class "deviceTab forumbox view-condensed active"
+  div class "content"
+  Table The holds everything table class "dev_db projectResults"
+    tbody
+      "td" class ".projec_title"
+        Text is Span ".project_link" with a link over the project name
+
+
+
+The actual ROM tab is in a slightly different spot
+Bar: div #"top_tabControls" then ajax control 5is the list for ROM's
