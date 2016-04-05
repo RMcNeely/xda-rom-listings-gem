@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+
+require 'pry'
+require_relative '../config/environment'
+
+scraper = Scraper.new
+binding.pry
+scraper
+
+binding.pry
