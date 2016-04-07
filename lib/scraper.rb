@@ -12,10 +12,14 @@ class Scraper
 
     @projects_list = []
     #    scraped.css(".thread-info-cell").each do |entry|
-    scraped.css(".thread-title-cell").each do |entry|
-      @projects_list << entry.css(".devdb-tag + .threadTitle").text
+    scraped.css(".thread-info-cell").each do |entry|
+      @projects_list <<{
+      :project_name => entry.css(".threadTitle").text,
+      :thread_link => entry.css(".thread-title-cell a").attribute("href").value,
+      :developer => entry.css(" .smallfont a").text
+    }
     end
-    @projects_list.delete_if {|thread| thread == ""}
+    @projects_list
 #binding.pry
   end
 
@@ -23,3 +27,6 @@ class Scraper
     @projects_list
   end
 end
+
+#project_name = {}
+#project_name = entry.css(".devdb-tag + .threadTitle").text

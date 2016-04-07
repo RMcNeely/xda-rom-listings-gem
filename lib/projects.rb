@@ -1,14 +1,18 @@
 require 'pry'
 
 class Project
-  attr_accessor :name
+  attr_accessor :name, :developer
   @@all = []
   @@roms = []
   @kernels = []
   @other_projects = []
+  @developer
+
   def initialize(name)
     @name = name
     @@all << self
+    #doctor.add_appointment(self)
+    #developer.add_project(self)
   end
 
   def self.all
@@ -21,7 +25,6 @@ class Project
 
   def self.kernels
     @kernels.each {|instance| puts "#{instance.name}"}
-
   end
 
   def self.sort

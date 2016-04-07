@@ -9,7 +9,13 @@ scraper = Scraper.new
 Scraper.fresh_scrape
 puts "Welcome to the XDA-Developers ROM updates Gem!"
 puts "This will allow you to check the LG-G3 for updates to various development projects."
-Scraper.projects_list.each {|thread| Project.new(thread)}
+Scraper.projects_list.each do |thread|
+  project = Project.new(thread[:project_name])
+  developer = Developer.new(thread[:developer])
+  developer.projects << project
+  project.developer = developer
+end
+#Scraper.projects_list.each {|thread| Developer.new(thread[:developer])}
 Project.sort
 Project.all.each.with_index(1) {|project, index| puts "#{index}). #{project.name}"}
 binding.pry
