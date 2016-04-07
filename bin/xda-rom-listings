@@ -5,7 +5,10 @@ require 'pry'
 require_relative '../config/environment'
 
 scraper = Scraper.new
-binding.pry
-scraper
-
+#binding.pry
+Scraper.fresh_scrape
+puts "Welcome to the XDA-Developers ROM updates Gem!"
+puts "This will allow you to check the LG-G3 for updates to various development projects."
+Scraper.projects_list.each {|thread| Project.new(thread)}
+Project.all.each.with_index(1) {|project, index| puts "#{index}). #{project.name}"}
 binding.pry
