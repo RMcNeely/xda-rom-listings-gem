@@ -11,7 +11,7 @@ class Scraper
     scraped = Nokogiri::HTML(open(scraped_url))
 
     @projects_list = []
-    #scraped.css("div #tab_romList").each do |div|
+    #    scraped.css(".thread-info-cell").each do |entry|
     scraped.css(".thread-title-cell").each do |entry|
       @projects_list << entry.css(".devdb-tag + .threadTitle").text
     end
