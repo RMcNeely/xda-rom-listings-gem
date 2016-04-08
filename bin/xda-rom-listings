@@ -3,19 +3,37 @@
 
 require 'pry'
 require_relative '../config/environment'
-
-scraper = Scraper.new
-#binding.pry
-Scraper.fresh_scrape
-puts "Welcome to the XDA-Developers ROM updates Gem!"
-puts "This will allow you to check the LG-G3 for updates to various development projects."
-Scraper.projects_list.each do |thread|
-  project = Project.new(thread[:project_name])
-  developer = Developer.new(thread[:developer])
-  developer.projects << project
-  project.developer = developer
-end
+extend MainMenu
+#scraper = Scraper.new
+##binding.pry
+#Scraper.fresh_scrape
+#puts "Welcome to the XDA-Developers ROM updates Gem!"
+#puts "This will allow you to check the LG-G3 for updates to various development projects."
+#Scraper.projects_list.each do |thread|
+#  project = Project.new(thread[:project_name])
+#  developer = Developer.new(thread[:developer])
+#  developer.projects << project
+#  project.developer = developer
+#end
 #Scraper.projects_list.each {|thread| Developer.new(thread[:developer])}
-Project.sort
-Project.all.each.with_index(1) {|project, index| puts "#{index}). #{project.name}"}
-binding.pry
+#Project.sort
+#Project.all.each.with_index(1) {|project, index| puts "#{index}). #{project.name}"}
+#choices = ["1","2","3","4"]
+#input = ""
+#puts "What would you like to do?"
+#puts "  1). List threads"
+#puts "  2). List by project type"
+#puts "  3). List by developer"
+#puts "  4). Exit"
+#until input == choices.any
+#input = gets.strip
+#end
+cli = CLIController.new
+CLIController.menu
+cli.get_input
+#binding.pry
+until cli.input == "exit" || cli.input  == "Exit"
+cli.menu_selection(cli.input)
+puts "Make another choice or Exit"
+cli.get_input
+end

@@ -18,6 +18,10 @@ class Developer
     @@all
   end
 
+  def self.list_all
+    @@all.each {|instance| puts "#{instance.name}"}
+  end
+
   def self.associate_project
     @@all.each do |person|
       person.projects << project.name
@@ -29,9 +33,17 @@ class Developer
     project.developer = self
   end
 
-  def add_appointment(appointment)
-    @appointments << appointment
-    appointment.doctor = self
+  def self.list_projects(developer)
+    #binding.pry
+    if Developer.all.each do |dev|
+      if dev.name == developer
+      #binding.pry
+        dev.projects.each {|instance| puts "#{instance.name}"}
+      end
+    end
+    else
+      puts "That's not a developer! Try again"
+    end
   end
 #  binding.pry
 end

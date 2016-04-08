@@ -27,6 +27,10 @@ class Project
     @kernels.each {|instance| puts "#{instance.name}"}
   end
 
+  def self.other
+    @other_projects.each {|instance| puts "#{instance.name}"}
+  end
+
   def self.sort
     @@all.each do |project|
     if project.name.include?("ROM")
